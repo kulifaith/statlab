@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
 <style type="text/css">
-	.card {
+    .card {
   position: relative;
   display: -ms-flexbox;
   display: flex;
@@ -240,143 +240,39 @@
   margin-bottom: -1px;
 }
 </style>
-	<div class="containe-fluid">
-	<div class="row mt-3 ml-3 mr-3">
+    <div class="containe-fluid">
+    <div class="row mt-3 ml-3 mr-3">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
+                    <br>
+                    <div class="row col-md-6">
+                        @foreach($row as $key => $sitevalue)
+                        <div class="col-md-6 mb-3">
                             <div class="card border-primary">
                                 <div class="card-body bg-primary">
                                     <div class="card-body text-white">
                                         <span class="float-right summary_icon"> <i class="fa fa-home "></i></span>
                                         <h4><b>
-                                            {{$site1}}
+                                            {{$sitevalue->name}}
                                         </b></h4>
-                                        <p><b>Number of Tenants ({{$house1}})</b></p>
-                                        <p><b>Vacant houses ({{$vacant_house1}})</b></p>
+                                        <p><b>Vacant Computers ({{($sitevalue->no_of_computers) - ($count = App\Models\Student::where('row_line', '=', $sitevalue->id)->where('status', '=','1')->count())}})</b></p>
+                                       
                                     </div>
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <a href="house" class="text-primary float-right">View List <span class="fa fa-angle-right"></span></a>
+                                            <a href="tenant" class="text-primary float-right"> <span class="fa fa-angle-right"></span></a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card border-warning">
-                                <div class="card-body bg-warning">
-                                    <div class="card-body text-white">
-                                        <span class="float-right summary_icon"> <i class="fa fa-user-friends "></i></span>
-                                        <h4><b>
-                                           {{$site2}}
-                                        </b></h4>
-                                        <p><b>Number of Tenants ({{$house2}})</b></p>
-                                        <p><b>Vacant houses ({{$vacant_house2}})</b></p>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <a href="tenant" class="text-primary float-right">View List <span class="fa fa-angle-right"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card border-success">
-                                <div class="card-body bg-success">
-                                    <div class="card-body text-white">
-                                        <span class="float-right summary_icon"> <i class="fa fa-file-invoice "></i></span>
-                                        <h4><b>
-                                            {{$site3}}
-                                        </b></h4>
-                                        <p><b>Number of Tenants ({{$house3}})</b></p>
-                                        <p><b>Vacant houses ({{$vacant_house3}})</b></p>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <a href="housetype" class="text-primary float-right">View List <span class="fa fa-angle-right"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-4 mb-3">
-                            <div class="card border-primary">
-                                <div class="card-body bg-primary">
-                                    <div class="card-body text-white">
-                                        <span class="float-right summary_icon"> <i class="fa fa-home "></i></span>
-                                        <h4><b>
-                                            {{$site_number}}
-                                        </b></h4>
-                                        <p><b>Sites</b></p>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <a href="site" class="text-primary float-right">View List <span class="fa fa-angle-right"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card border-warning">
-                                <div class="card-body bg-warning">
-                                    <div class="card-body text-white">
-                                        <span class="float-right summary_icon"> <i class="fa fa-user-friends "></i></span>
-                                        <h4><b>
-                                           
-                                        </b></h4>
-                                        <p><b>Payments This Month</b></p>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <a href="tenant" class="text-primary float-right">View List <span class="fa fa-angle-right"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <div class="card border-success">
-                                <div class="card-body bg-success">
-                                    <div class="card-body text-white">
-                                        <span class="float-right summary_icon"> <i class="fa fa-file-invoice "></i></span>
-                                        <h4><b>
-                                            
-                                        </b></h4>
-                                        <p><b>Tenants Due for payment</b></p>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <a href="tenant" class="text-primary float-right">View List <span class="fa fa-angle-right"></span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
+                        @endforeach
+                    </div> 
                 </div>
-            </div>      			
+            </div>                  
         </div>
     </div>
 </div>

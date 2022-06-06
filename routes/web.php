@@ -67,53 +67,13 @@ Route::middleware('auth')->group(function()
         "uses" => "UserController@updateOwnPassword"
     ));
 
-    Route::resource('house', 'HouseController');
-    Route::resource('housetype', 'HouseTypeController');
-    Route::resource('payment', 'PaymentController');
-    Route::resource('paymentmethod', 'PaymentMethodController');
-    Route::resource('tenant', 'TenantController');
-    Route::resource('site', 'SiteController');
-    Route::resource('maintenance', 'MaintenanceController');
+    Route::resource('student', 'StudentController');
+    Route::resource('labrows', 'LabRowController');
+    Route::resource('course', 'CourseController');
 
-    Route::any("/summary", array(
-        "as"   => "tenant.summary",
-        "uses" => "PaymentController@summary"
-    ));
-
-    Route::any("/tenant_detail/{id}", array(
-        "as"   => "tenant.detail",
-        "uses" => "PaymentController@viewTenantDetails"
-         ));
-
-    Route::post("/payment/update/{id}", array(
-            "as"   => "payment.update",
-            "uses" => "PaymentController@updateAmountPaid"
-        ));
-
-    Route::get("/payment/{id}/show", array(
-        "as"   => "payment.show",
-        "uses" => "PaymentController@show"
-    ));
-
-    // client Receipt small
-        Route::any("/tenantReceipt/{id}/{visit}", array(
-            "as" => "tenant.receipt",
-            "uses" => "PaymentController@printPaymentReceipt"
-        ));
-
-        Route::any("/sendReceipt/{id}/{visit}", array(
-            "as" => "tenant.mail",
-            "uses" => "PaymentController@sendPaymentReceipt"
-        ));
-
-
-        Route::get('my-demo-mail','PaymentController@myDemoMail');
-
-    //Unhls patient routes end
-
-    Route::any("/instrument/getresult", array(
-        "as"   => "instrument.getResult",
-        "uses" => "InstrumentController@getTestResult"
+    Route::any("/report", array(
+        "as"   => "lab.report",
+        "uses" => "StudentController@labreport"
     ));
 
     Route::group(["middleware" => "can:manage_users"], function()

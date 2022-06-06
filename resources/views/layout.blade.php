@@ -50,7 +50,7 @@
 
     <!-- jQuery barcode script -->
     <script type="text/javascript" src="{{ asset('js/jquery-barcode-2.0.2.js') }}"></script>
-    <title>{{ config('kblis.name') }} </title>
+    <title> </title>
 </head>
 <body class="side_nav_hover">
 @include("header")

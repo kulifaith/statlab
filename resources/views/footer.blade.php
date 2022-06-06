@@ -31,21 +31,8 @@
 <hr>
     <footer class="footer">
         <div>
-        		{{ HTML::link('http://www.estate.com', 'ESTATE &copy; ' . date("Y"))}}
+        		{{ HTML::link('#', 'LAB MGT SYSTEM &copy; ' . date("Y"))}}
         </div>
-        <!-- <div class="col-md-12 row">
-        	<div class="col-md-2 col-md-offset-4">
-        		<a href="http://health.go.ug/" target="_blank">
-        			<img src="{{ config('kblis.uganda-logo') }}" alt="Government of Uganda">
-        		</a>
-        	</div>
-
-            <div class="col-md-2">
-                <a href="http://www.cdc.gov/" target="_blank">
-        			<img src="{{ config('kblis.cdc-logo') }}" alt="Centres for Disease Control and Prevention">
-        		</a>
-        	</div>
-        </div> -->
 
     </footer>
 

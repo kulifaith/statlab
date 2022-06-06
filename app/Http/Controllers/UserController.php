@@ -6,10 +6,8 @@ use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\User;
-use App\Models\Tenant;
-use App\Models\Site;
-use App\Models\HouseType;
-use App\Models\House;
+use App\Models\LabRow;
+use App\Models\Student;
 
 //Importing laravel-permission models
 use App\Models\Role;
@@ -19,6 +17,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\DB;
 
 /**
  *Contains functions for managing users
@@ -128,48 +127,16 @@ class UserController extends Controller {
 
     public function homeAction(){
         
-        $tenant = Tenant::count();
-        $siteA = Site::where('id','=',1)->orderBy('name','ASC')->get();
-        $siteB = Site::where('id','=',2)->orderBy('name','ASC')->get();
-        $siteC = Site::where('id','=',3)->orderBy('name','ASC')->get();
-        
-        $site1 = $siteA[0]['name'];
-        $site2 = $siteB[0]['name'];
-        $site3 = $siteC[0]['name'];
-        $site_number = Site::count();
-        $category = HouseType::orderBy('name','ASC')->get();
-        $category_number = HouseType::count();
-        $house_number = House::count();
-        $house = House::orderBy('house_no','ASC')->get();
-        $vacant_house1 = House::where('site_id',1)->where('available','=',0)->count();
-        $vacant_house2 = House::where('site_id',2)->where('available','=',0)->count();
-        $vacant_house3 = House::where('site_id',3)->where('available','=',0)->count();
-        $house1 = House::where('site_id',1)->where('available','=',1)->count();
-        $house2 = House::where('site_id',2)->where('available','=',1)->count();
-        $house3 = House::where('site_id',3)->where('available','=',1)->count();
-        
-
+        $row = LabRow::orderBy('name','ASC')->get(); 
+        $data = Student::where('status','=',0)->get();
 
         //Load the view and pass the house
         return view('user.home')
-        ->with('tenant',$tenant)
-        ->with('site1',$site1)
-        ->with('site2',$site2)
-        ->with('site3',$site3)
-        ->with('site_number',$site_number)
-        ->with('category',$category)
-        ->with('category_number',$category_number)
-        ->with('house_number',$house_number)
-        ->with('vacant_house1',$vacant_house1)
-        ->with('vacant_house2',$vacant_house2)
-        ->with('vacant_house3',$vacant_house3)
-        ->with('house1',$house1)
-        ->with('house2',$house2)
-        ->with('house3',$house3)
-        ->with('house',$house);
+        ->with('row',$row)
+        ->with('data',$data);
     }
 
-	public function dashboard(){
+    public function dashboard(){
         return view("user.home");
     }
 

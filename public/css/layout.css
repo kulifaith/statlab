@@ -152,20 +152,19 @@ label, input {
     top:0;
     position: absolute;
     /* background-image: linear-gradient(to bottom, #444444 0px, #000000 100%);*/
-        background-image: url("image/home.jpeg");
         background-size: auto;
 }
     .login-page .login-form {
-        background: #e9f9f166;
+        background: #a4a2dd66;
         color: #161a11;
-        width: 351px;
+        width: 400px;
         margin: auto;
-        margin-top:40px;
+        margin-top:50px;
         border: #666666;
         text-align: center;
         position:relative;
         border-radius: 5px;
-        height: 350px;
+        height: 400px;
     }
 
         .login-page .login-form .form-head,

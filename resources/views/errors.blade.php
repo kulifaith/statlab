@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap-theme.min.css') }}" />
         <link rel="stylesheet" type="text/css" href="{{ asset('css/layout.css') }}" />
-        <title>{{ config('kblis.name') }} {{ config('kblis.version') }}</title>
+        <title></title>
     </head>
     <body>
         <div class="content error-page">
